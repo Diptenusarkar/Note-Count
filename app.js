@@ -56,8 +56,6 @@ function resetInputs() {
 }
 
 function printReceipt() {
-    // Get user input values
-    // const userInput2000 = document.getElementById("user__input2000").value;
     const userInput500 = document.getElementById("user__input500").value;
     const userInput200 = document.getElementById("user__input200").value;
     const userInput100 = document.getElementById("user__input100").value;
@@ -68,8 +66,6 @@ function printReceipt() {
     const userInput2 = document.getElementById("user__input2").value;
     const userInput1 = document.getElementById("user__input1").value;
 
-    // Calculate totals
-    // const total2000 = userInput2000 * 2000;
     const total500 = userInput500 * 500;
     const total200 = userInput200 * 200;
     const total100 = userInput100 * 100;
@@ -79,11 +75,13 @@ function printReceipt() {
     const total5 = userInput5 * 5;
     const total2 = userInput2 * 2;
     const total1 = userInput1 * 1;
-    const totalSum =  total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1;
+    const totalSum = total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
     // Create receipt string
     const receiptString = `
-  
     Totals:
     500 x ${userInput500} = ${total500}
     200 x ${userInput200} = ${total200}
@@ -95,74 +93,13 @@ function printReceipt() {
     2 x ${userInput2} = ${total2}
     1 x ${userInput1} = ${total1}
   
-    Total Sum: ${totalSum}`;
+    Total Sum: ${totalSum} (${numberToWords(totalSum)})`;
 
-    // Create new window and write receipt string to it
-    const receiptWindow = window.open("", "Receipt", "width=400,height=800");
-    receiptWindow.document.write(`<pre>${receiptString}</pre>`);
+    // Add receipt string to PDF
+    doc.text(receiptString, 10, 10);
 
-    // Print the receipt window
-    receiptWindow.print();
-}
-
-function saveReceipt() {
-    // Get user input values
-    // const userInput2000 = document.getElementById("user__input2000").value;
-    const userInput500 = document.getElementById("user__input500").value;
-    const userInput200 = document.getElementById("user__input200").value;
-    const userInput100 = document.getElementById("user__input100").value;
-    const userInput50 = document.getElementById("user__input50").value;
-    const userInput20 = document.getElementById("user__input20").value;
-    const userInput10 = document.getElementById("user__input10").value;
-    const userInput5 = document.getElementById("user__input5").value;
-    const userInput2 = document.getElementById("user__input2").value;
-    const userInput1 = document.getElementById("user__input1").value;
-
-    // Calculate totals
-    // const total2000 = userInput2000 * 2000;
-    const total500 = userInput500 * 500;
-    const total200 = userInput200 * 200;
-    const total100 = userInput100 * 100;
-    const total50 = userInput50 * 50;
-    const total20 = userInput20 * 20;
-    const total10 = userInput10 * 10;
-    const total5 = userInput5 * 5;
-    const total2 = userInput2 * 2;
-    const total1 = userInput1 * 1;
-    const totalSum =  total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1;
-
-    // Create receipt string
-    const receiptString = `User Input: 
-    500 x ${userInput500}
-    200 x ${userInput200}
-    100 x ${userInput100}
-    50 x ${userInput50}
-    20 x ${userInput20}
-    10 x ${userInput10}
-    5 x ${userInput5}
-    2 x ${userInput2}
-    1 x ${userInput1}
-  
-    Totals:
-    500 x ${userInput500} = ${total500}
-    200 x ${userInput200} = ${total200}
-    100 x ${userInput100} = ${total100}
-    50 x ${userInput50} = ${total50}
-    20 x ${userInput20} = ${total20}
-    10 x ${userInput10} = ${total10}
-    5 x ${userInput5} = ${total5}
-    2 x ${userInput2} = ${total2}
-    1 x ${userInput1} = ${total1}
-  
-    Total Sum: ${totalSum}`;
-
-    // Create a plain text version of the receipt string
-    const plainTextReceipt = receiptString.replace(/<\/?[^>]+(>|$)/g, ""); // Remove any HTML tags from the string
-
-    // Prompt the user to save the file
-    const fileName = "receipt.txt";
-    const blob = new Blob([plainTextReceipt], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, fileName);
+    // Save the PDF
+    doc.save("receipt.pdf");
 }
 
 
@@ -208,4 +145,4 @@ function numberToWords(num) {
     return words.trim();
 }
 
-const total__number__disply = document.getElementById("total__number--display1");
+// const total__number__disply = document.getElementById("total__number--display1");
