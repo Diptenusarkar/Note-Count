@@ -1,0 +1,209 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #090D15;
+    color: #F0F3F9;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 60%;
+    border-radius: .8rem;
+}
+
+.text__box {
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.text__box h1 {
+    font-size: 4rem;
+    padding: 1.5rem 0;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.user__noteInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80%;
+}
+
+.user__noteInput--box {
+    width: 80%;
+}
+
+.user__noteInput--display {
+    width: 20%;
+    height: 42vh;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+table tr {
+    text-align: center;
+}
+
+tr:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+table tr th{
+    font-size: 2rem;
+    border: 1px solid rgb(0, 225, 255);
+    padding: 1rem .5rem;
+    border-radius: 3%;
+}
+
+.note__value {
+    font-size: 2.8rem;
+}
+
+input {
+    outline-color: transparent;
+    background-color: transparent;
+    font-size: 2.8rem;
+    width: 80%;
+    color: inherit;
+    padding: .2rem .5rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.user__display {
+    font-size: 2.8rem;
+}
+
+.user__noteInput--display-box {
+    height: 50%;
+}
+
+.user__noteInput--display-box-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user__noteInput--display-box-2 button {
+    display: block;
+    width: 80%;
+    font-size: 1.7rem;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.user__noteInput--display-box-2 button:not(:last-child) {
+    margin-bottom: .5rem;
+}
+
+.total__number--display {
+    font-size: 2.5rem;
+}
+
+.bottom__box {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.bottom__box p {
+    font-size: 2rem;
+}
+
+#total__number--display1 {
+    color: yellow;
+}
+
+input::placeholder {
+    font-size: 1.2rem;
+    color: white;
+}
+
+@media screen and (min-width:319px) and (max-width: 426px) {
+    main {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .user__noteInput {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .user__noteInput--box {
+        width: 90%;
+    }
+
+    .user__noteInput--display {
+        min-width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .user__noteInput--display-box-2 {
+        height: auto;
+        min-width: 100%;
+        flex-direction: row;
+    }
+
+    .user__noteInput--display-box {
+        height: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    table tr th{
+        font-size: 1.5rem;
+        padding: .5rem;
+    }
+
+    .text__box h1 {
+        font-size: 2.5rem;
+    }
+
+    .user__noteInput--display-box-2 button {
+        width: 90%;
+        margin: 1rem;
+    }
+
+    .bottom__box p {
+        font-size: 1.4rem;
+        margin: -1rem 4% 2rem;
+    }
+
+    .note__value,
+    .user__display {
+        font-size: 1.9rem;
+    }
+}
+
+@media print{
+    main {
+        display: none;
+    }
+}

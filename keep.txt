@@ -1,0 +1,18 @@
+let user__input500 = document.getElementById("user__input500");
+let user__input200 = document.getElementById("user__input200");
+let user__input100 = document.getElementById("user__input100");
+let user__input50 = document.getElementById("user__input50");
+let user__input20 = document.getElementById("user__input20");
+let user__input10 = document.getElementById("user__input10");
+
+function getData() {
+    let a = document.getElementById('user__input2000').value;
+    console.log(this.value);
+}
+
+function displayUserInput() {
+    var userInput = document.getElementById("user__input2000").value;
+    var totalElement = document.getElementById("user__input2000-total");
+    totalElement.textContent = userInput;
+}
+121

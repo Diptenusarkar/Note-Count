@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Count | Dsky Solution</title>
+
+    <link rel="stylesheet" href="style/main.css">
+
+    <script src="app.js"></script>
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf@2.4.0/dist/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <!-- no header -->
+    </header>
+
+    <main class="main">
+        <div class="text__box">
+            <h1><img src="./india-flag.png" alt="india-flag" height="30"> India note count's<span
+                    style="color:red;">.</span></h1>
+        </div>
+
+        <div class="user__noteInput">
+            <div class="user__noteInput--box">
+                <table id="userInputForm">
+                    <tr>
+                        <th>Note Value</th>
+                        <th>Note Pieces</th>
+                        <th>Total Value</th>
+                    </tr>
+                    <!-- <tr>
+                        <td class="note__value">2000</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input2000" oninput="displayUserInput()"
+                                onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input2000-total" class="user__input2000-display user__display">0</td>
+                    </tr> -->
+
+                    <tr>
+                        <td class="note__value">500</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input500" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input500-total" class="user__input500-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">200</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input200" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input200-total" class="user__input200-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">100</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input100" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input100-total" class="user__input100-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">50</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input50" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input50-total" class="user__input50-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">20</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input20" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input20-total" class="user__input20-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">10</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input10" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input10-total" class="user__input10-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">5</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input5" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input5-total" class="user__input5-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">2</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input2" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input2-total" class="user__input2-display user__display">0</td>
+                    </tr>
+
+                    <tr>
+                        <td class="note__value">1</td>
+                        <td>
+                            <input type="tel" maxlength="3" placeholder="Enter Pieces" pattern="[0-9]*"
+                                id="user__input1" oninput="displayUserInput()" onkeypress="return isNumberKey(event)">
+                        </td>
+                        <td id="user__input1-total" class="user__input1-display user__display">0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="user__noteInput--display">
+                <div class="user__noteInput--display-box user__noteInput--display-box-1">
+                    <label id="total__number--display" class="total__number--display">0</label>
+                    <label id="total__number--display1" class="total__number--display1"></label>
+
+                </div>
+                <div class="user__noteInput--display-box user__noteInput--display-box-2">
+                    <button onclick="resetInputs()">Reset</button>
+                    <button onclick="printReceipt()">Print Receipt</button>
+                    <!-- <button onclick="comingSoon()">Save as Text</button>
+                    <button onclick="quitAllert()">Quit Application</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="bottom__box">
+            <p style="line-height: 1.5;">Note Count - Free for all, no Ads, <span style="color:rgb(0, 225, 255);">[We respect your privacy, WE
+                    DON'T COLLECT ANY DATA]</span><br> V- 0.1.8 (Beta)</p>
+        </div>
+    </main>
+    <script>
+        // var quitButton = document.getElementById("quit-button");
+        // quitButton.addEventListener("click", function () {
+        //     // Add any code you want to run when the quit button is clicked
+        //     var windowObjectReference = window.open("", "_self");
+        //     windowObjectReference.close();
+        // });
+
+        function closeWindow() {
+            window.close();
+        }
+
+        function comingSoon() {
+            alert("Under Development. Coming soon.")
+        }
+
+        function quitAllert() {
+            alert("This is not working right now.")
+        }
+
+        // off day 
+
+    </script>
+</body>
+
+</html>
