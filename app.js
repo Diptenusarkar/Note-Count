@@ -31,6 +31,7 @@ function displayUserInput() {
 
     var totalSum = total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1;
     document.getElementById("total__number--display").textContent = totalSum.toLocaleString('en-IN');
+    document.getElementById("total__number--display0").textContent = totalSum.toLocaleString('en-IN');
 
     return totalSum;
 }

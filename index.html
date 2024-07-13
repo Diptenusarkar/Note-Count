@@ -31,6 +31,11 @@
         <div class="text__box">
             <h1><img src="./india-flag.png" alt="india-flag" height="30"> India note count's<span
                     style="color:red;">.</span></h1>
+            
+                    <div class="user__noteInput--display-box user__noteInput--display-box-1 for-mobile">₹
+                        <label id="total__number--display0" class="total__number--display">0</label>
+                        <!-- <label id="total__number--display1" class="total__number--display1"></label> -->
+                    </div>
         </div>
 
         <div class="user__noteInput">
@@ -134,22 +139,21 @@
                 </table>
             </div>
             <div class="user__noteInput--display">
-                <div class="user__noteInput--display-box user__noteInput--display-box-1">
+                <div class="user__noteInput--display-box user__noteInput--display-box-1 for-desktop">₹
                     <label id="total__number--display" class="total__number--display">0</label>
-                    <label id="total__number--display1" class="total__number--display1"></label>
-
+                    <!-- <label id="total__number--display1" class="total__number--display1"></label> -->
                 </div>
                 <div class="user__noteInput--display-box user__noteInput--display-box-2">
-                    <button onclick="resetInputs()">Reset</button>
-                    <button onclick="printReceipt()">Print Receipt</button>
-                    <button onclick="shareButton()">Share Receipt</button>
+                    <button onclick="resetInputs()" style="background-color: rgba(245, 1, 1, 0.685); outline: none;">Reset</button>
+                    <button onclick="printReceipt()" style="background-color: rgba(245, 188, 1, 0.685); outline: none;">Print Receipt</button>
+                    <button onclick="shareButton()" style="background-color: rgba(1, 208, 245, 0.87); outline: none;">Share Receipt</button>
                     <!--<button onclick="quitAllert()">Quit Application</button> -->
                 </div>
             </div>
         </div>
         <div class="bottom__box">
             <p style="line-height: 1.5;">Note Count - Free for all, no Ads, <span style="color:rgb(0, 225, 255);">[We respect your privacy, WE
-                    DON'T COLLECT ANY DATA]</span><br> V- 0.2.8 (Beta)</p>
+                    DON'T COLLECT ANY DATA]</span><br> V- 0.2.9 (Beta)</p>
         </div>
     </main>
     <script>
