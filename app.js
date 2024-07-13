@@ -1,46 +1,37 @@
 function displayUserInput() {
-    // This is user input box 
-    // var userInput2000 = document.getElementById("user__input2000").value;
-    var userInput500 = document.getElementById("user__input500").value;
-    var userInput200 = document.getElementById("user__input200").value;
-    var userInput100 = document.getElementById("user__input100").value;
-    var userInput50 = document.getElementById("user__input50").value;
-    var userInput20 = document.getElementById("user__input20").value;
-    var userInput10 = document.getElementById("user__input10").value;
-    var userInput5 = document.getElementById("user__input5").value;
-    var userInput2 = document.getElementById("user__input2").value;
-    var userInput1 = document.getElementById("user__input1").value;
+    var userInput500 = parseInt(document.getElementById("user__input500").value) || 0;
+    var userInput200 = parseInt(document.getElementById("user__input200").value) || 0;
+    var userInput100 = parseInt(document.getElementById("user__input100").value) || 0;
+    var userInput50 = parseInt(document.getElementById("user__input50").value) || 0;
+    var userInput20 = parseInt(document.getElementById("user__input20").value) || 0;
+    var userInput10 = parseInt(document.getElementById("user__input10").value) || 0;
+    var userInput5 = parseInt(document.getElementById("user__input5").value) || 0;
+    var userInput2 = parseInt(document.getElementById("user__input2").value) || 0;
+    var userInput1 = parseInt(document.getElementById("user__input1").value) || 0;
 
-    // This display total number of amount user enter 
-    // var total2000 = document.getElementById("user__input2000-total");
-    var total500 = document.getElementById("user__input500-total");
-    var total200 = document.getElementById("user__input200-total");
-    var total100 = document.getElementById("user__input100-total");
-    var total50 = document.getElementById("user__input50-total");
-    var total20 = document.getElementById("user__input20-total");
-    var total10 = document.getElementById("user__input10-total");
-    var total5 = document.getElementById("user__input5-total");
-    var total2 = document.getElementById("user__input2-total");
-    var total1 = document.getElementById("user__input1-total");
+    var total500 = userInput500 * 500;
+    var total200 = userInput200 * 200;
+    var total100 = userInput100 * 100;
+    var total50 = userInput50 * 50;
+    var total20 = userInput20 * 20;
+    var total10 = userInput10 * 10;
+    var total5 = userInput5 * 5;
+    var total2 = userInput2 * 2;
+    var total1 = userInput1 * 1;
 
-    // This is going to calculate all amount 
-    // var total2000 = total2000.textContent = userInput2000 * 2000;
-    var total500 = total500.textContent = userInput500 * 500;
-    var total200 = total200.textContent = userInput200 * 200;
-    var total100 = total100.textContent = userInput100 * 100;
-    var total50 = total50.textContent = userInput50 * 50;
-    var total20 = total20.textContent = userInput20 * 20;
-    var total10 = total10.textContent = userInput10 * 10;
-    var total5 = total5.textContent = userInput5 * 5;
-    var total2 = total2.textContent = userInput2 * 2;
-    var total1 = total1.textContent = userInput1 * 1;
+    document.getElementById("user__input500-total").textContent = total500;
+    document.getElementById("user__input200-total").textContent = total200;
+    document.getElementById("user__input100-total").textContent = total100;
+    document.getElementById("user__input50-total").textContent = total50;
+    document.getElementById("user__input20-total").textContent = total20;
+    document.getElementById("user__input10-total").textContent = total10;
+    document.getElementById("user__input5-total").textContent = total5;
+    document.getElementById("user__input2-total").textContent = total2;
+    document.getElementById("user__input1-total").textContent = total1;
 
-    var totalSum = (total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1).toLocaleString('en-IN');
+    var totalSum = total500 + total200 + total100 + total50 + total20 + total10 + total5 + total2 + total1;
+    document.getElementById("total__number--display").textContent = totalSum.toLocaleString('en-IN');
 
-    var total__number__display = document.getElementById("total__number--display");
-    // var total_textWord = document.getElementById("total__number--display1");
-    total__number__display.textContent = totalSum;
-    // total_textWord.textContent = numberToWords(totalSum);
     return totalSum;
 }
 
@@ -51,20 +42,35 @@ function resetInputs() {
     });
     var totals = document.querySelectorAll(".user__display, .total__number--display");
     totals.forEach(function (total) {
-        total.innerHTML = "0";
+        total.textContent = "0";
     });
 }
 
 function printReceipt() {
-    const userInput500 = document.getElementById("user__input500").value;
-    const userInput200 = document.getElementById("user__input200").value;
-    const userInput100 = document.getElementById("user__input100").value;
-    const userInput50 = document.getElementById("user__input50").value;
-    const userInput20 = document.getElementById("user__input20").value;
-    const userInput10 = document.getElementById("user__input10").value;
-    const userInput5 = document.getElementById("user__input5").value;
-    const userInput2 = document.getElementById("user__input2").value;
-    const userInput1 = document.getElementById("user__input1").value;
+    const pdfBlob = generatePDF();
+
+    const url = URL.createObjectURL(pdfBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'receipt.pdf';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+}
+
+function generatePDF() {
+    const userInput500 = parseInt(document.getElementById("user__input500").value) || 0;
+    const userInput200 = parseInt(document.getElementById("user__input200").value) || 0;
+    const userInput100 = parseInt(document.getElementById("user__input100").value) || 0;
+    const userInput50 = parseInt(document.getElementById("user__input50").value) || 0;
+    const userInput20 = parseInt(document.getElementById("user__input20").value) || 0;
+    const userInput10 = parseInt(document.getElementById("user__input10").value) || 0;
+    const userInput5 = parseInt(document.getElementById("user__input5").value) || 0;
+    const userInput2 = parseInt(document.getElementById("user__input2").value) || 0;
+    const userInput1 = parseInt(document.getElementById("user__input1").value) || 0;
 
     const total500 = userInput500 * 500;
     const total200 = userInput200 * 200;
@@ -80,7 +86,6 @@ function printReceipt() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Create receipt string
     const receiptString = `
     Totals:
     500 x ${userInput500} = ${total500}
@@ -92,17 +97,45 @@ function printReceipt() {
     5 x ${userInput5} = ${total5}
     2 x ${userInput2} = ${total2}
     1 x ${userInput1} = ${total1}
-  
+    
     Total Sum: ${totalSum} (${numberToWords(totalSum)})`;
 
-    // Add receipt string to PDF
     doc.text(receiptString, 10, 10);
-
-    // Save the PDF
-    doc.save("receipt.pdf");
+    return doc.output('blob');
 }
 
+function shareButton() {
+    const pdfBlob = generatePDF();
+    const totalSum = displayUserInput();
 
+    const shareData = {
+        title: 'Receipt',
+        text: `Here is the receipt with a total sum of ${totalSum}.`,
+        files: [
+            new File([pdfBlob], 'receipt.pdf', { type: 'application/pdf' })
+        ]
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).then(() => {
+            console.log('Receipt shared successfully.');
+        }).catch((error) => {
+            console.error('Error sharing receipt:', error);
+        });
+    } else {
+        const url = URL.createObjectURL(pdfBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'receipt.pdf';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+        alert('Web Share API is not supported in your browser. The receipt has been downloaded instead.');
+    }
+}
 
 function numberToWords(num) {
     const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
@@ -110,7 +143,6 @@ function numberToWords(num) {
     const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
     if (num === 0) return 'zero';
-
     if (num < 0) return 'minus ' + numberToWords(Math.abs(num));
 
     let words = '';
@@ -144,5 +176,3 @@ function numberToWords(num) {
 
     return words.trim();
 }
-
-// const total__number__disply = document.getElementById("total__number--display1");
