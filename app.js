@@ -148,32 +148,37 @@ function numberToWords(num) {
 
     let words = '';
 
-    if (num >= 1000000) {
-        words += numberToWords(Math.floor(num / 1000000)) + ' million ';
-        num %= 1000000;
+    if (num >= 10000000) {  // Crore
+        words += numberToWords(Math.floor(num / 10000000)) + ' crore ';
+        num %= 10000000;
     }
 
-    if (num >= 1000) {
+    if (num >= 100000) {  // Lakh
+        words += numberToWords(Math.floor(num / 100000)) + ' lakh ';
+        num %= 100000;
+    }
+
+    if (num >= 1000) {  // Thousand
         words += numberToWords(Math.floor(num / 1000)) + ' thousand ';
         num %= 1000;
     }
 
-    if (num >= 100) {
+    if (num >= 100) {  // Hundred
         words += numberToWords(Math.floor(num / 100)) + ' hundred ';
         num %= 100;
     }
 
-    if (num >= 20) {
+    if (num >= 20) {  // Tens
         words += tens[Math.floor(num / 10)] + ' ';
         num %= 10;
-    } else if (num >= 10) {
+    } else if (num >= 10) {  // Teens
         words += teens[num - 10] + ' ';
         num = 0;
     }
 
-    if (num > 0) {
+    if (num > 0) {  // Ones
         words += ones[num] + ' ';
     }
 
     return words.trim();
-}
+}      // "fifty thousand one hundred twenty three"
