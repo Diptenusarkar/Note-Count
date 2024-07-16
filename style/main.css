@@ -67,7 +67,7 @@ tr:not(:last-child) {
     margin-bottom: 2rem;
 }
 
-table tr th{
+table tr th {
     font-size: 2rem;
     border: 1px solid rgb(0, 225, 255);
     padding: 1rem .5rem;
@@ -193,7 +193,7 @@ input::placeholder {
     .for-mobile {
         align-items: center;
     }
-     
+
     /* .for-mobile label {
         padding: -1rem !important;
         
@@ -211,7 +211,7 @@ input::placeholder {
         font-size: 2.5rem;
     }
 
-    table tr th{
+    table tr th {
         font-size: 1.5rem;
         padding: .5rem;
     }
@@ -236,8 +236,38 @@ input::placeholder {
     }
 }
 
-@media print{
+@media print {
     main {
         display: none;
     }
+}
+
+.button {
+    line-height: 3.8rem;
+    font-size: 2rem;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 3px;
+    border: 0;
+}
+
+.button-1 {
+    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+    color: #fff;
+    box-shadow: 6px 0px 0px #00E6F6;
+}
+
+.button-2 {
+    background: linear-gradient(45deg, transparent 5%, #0c67b1 5%);
+    color: #fff;
+    box-shadow: 6px 0px 0px #cccf04;
+}
+
+.button-3 {
+    background: linear-gradient(45deg, transparent 5%, #026779 5%);
+    color: #fff;
+    box-shadow: 6px 0px 0px #00f66f;
 }
